@@ -1,6 +1,7 @@
 package com.example.vita.broadcastsender;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,12 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendBroadcast(new Intent("com.example.vita.broadcastnotification"));
+                Intent intent = new Intent("com.example.vita.broadcastnotification1");
+                //intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+                Bundle bd = new Bundle();
+                bd.putString("name","开启了一个全局广播");
+                intent.putExtras(bd);
+                sendBroadcast(intent);
             }
         });
     }
